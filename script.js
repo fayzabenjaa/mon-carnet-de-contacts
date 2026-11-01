@@ -23,6 +23,14 @@ function afficher () {
     })
 }
 
+liste.addEventListener("click", (event)=> {
+    if (event.target.tagName === "BUTTON") {
+        const index = event.target.dataset.index;
+        contacts.splice(index, 1);
+        afficher();
+    }
+})
+
 formulaire.addEventListener("submit", (event)=> {
     event.preventDefault();
     if (nom.value.trim() === "") {
