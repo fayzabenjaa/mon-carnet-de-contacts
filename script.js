@@ -1,3 +1,5 @@
+const { createElement } = require("react");
+
 const search = document.getElementById("search");
 const compteur = document.getElementById("compteur");
 const liste = document.getElementById("liste");
@@ -10,8 +12,13 @@ let contacts = [];
 function afficher () {
     liste.innerHTML = ``;
     contacts.forEach((contact) => {
-        const li = createElement("li");
+        const li = document.createElement("li");
         li.textContent = `${contact.nom} ${contact.tel}`;
+        const deletbtn = document.createElement("button");
+        deletbtn.textContent = "supprimer" ;
+        deletbtn.dataset.index = index;
+
+        li.append(deletbtn);
         liste.append(li);
     })
 }
