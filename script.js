@@ -1,5 +1,3 @@
-const { createElement } = require("react");
-
 const search = document.getElementById("search");
 const compteur = document.getElementById("compteur");
 const liste = document.getElementById("liste");
@@ -11,7 +9,7 @@ let contacts = [];
 
 function afficher () {
     liste.innerHTML = ``;
-    contacts.forEach((contact) => {
+    contacts.forEach((contact, index) => {
         const li = document.createElement("li");
         li.textContent = `${contact.nom} ${contact.tel}`;
         const deletbtn = document.createElement("button");
