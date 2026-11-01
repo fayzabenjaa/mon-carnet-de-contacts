@@ -10,6 +10,21 @@
     <header >
         <h1 class="bg-blue-900 text-white font-bold h-25 flex justify-center items-center">mon carnet de contacts</h1>
     </header>
-    
+    <main class="grid grid-cols-2 bg-indigo-900 text-white">
+        <aside class="text-white flex flex-col ">
+            <p class="m-2">Mes contacts</p>
+            <input type="search" id="rechercher" placeholder="Rechercher..." class="bg-blue-900">
+            <ul id="liste"></ul>
+            <p id="compteur"></p>
+        </aside>
+        <form id="form" class="flex flex-col ">
+            <h2>Ajouter un contact</h2>
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom">
+            <label for="tel">Téléphone</label>
+            <input type="tel" name="tel" id="tel">
+            <button type="submit" class="bg-green-600 text-white">+ Ajouter</button>
+        </form>
+    </main>
 </body>
 </html>
