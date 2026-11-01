@@ -6,25 +6,28 @@
     <title>mon carnet de contacts</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
     <header >
         <h1 class="bg-blue-900 text-white font-bold h-25 flex justify-center items-center">mon carnet de contacts</h1>
     </header>
-    <main class="grid grid-cols-2 bg-indigo-900 text-white">
-        <aside class="text-white flex flex-col ">
-            <p class="m-2">Mes contacts</p>
-            <input type="search" id="rechercher" placeholder="Rechercher..." class="bg-blue-900">
+    <main class="grid grid-cols-2 bg-indigo-900 text-white flex-1 ">
+
+        <aside class="text-white flex flex-col h-full m-5">
+            <h2 class="flex justify-center items-center font-bold m-5">Mes contacts</h2>
+            <input type="search" id="rechercher" placeholder="Rechercher..." class="bg-blue-900 p-2 rounded-2xl m-2">
             <ul id="liste"></ul>
             <p id="compteur"></p>
         </aside>
-        <form id="form" class="flex flex-col ">
-            <h2>Ajouter un contact</h2>
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom">
-            <label for="tel">Téléphone</label>
-            <input type="tel" name="tel" id="tel">
-            <button type="submit" class="bg-green-600 text-white">+ Ajouter</button>
+
+        <form id="form" class="flex flex-col h-full m-5">
+            <h2 class="flex justify-center items-center font-bold m-5">Ajouter un contact</h2>
+            <label for="nom" class="m-5">Nom</label>
+            <input type="text" name="nom" id="nom" class="bg-blue-900 p-2 rounded-2xl m-2">
+            <label for="tel" class="m-2">Téléphone</label>
+            <input type="tel" name="tel" id="tel" class="bg-blue-900 p-2 rounded-2xl m-2">
+            <button type="submit" class="bg-green-600 text-white p-2  rounded-2xl m-2">+ Ajouter</button>
         </form>
+
     </main>
 </body>
 </html>
