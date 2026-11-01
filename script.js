@@ -3,6 +3,7 @@ const compteur = document.getElementById("compteur");
 const liste = document.getElementById("liste");
 const nom = document.getElementById("nom")
 const tel = document.getElementById("tel")
+const formulaire = document.getElementById("form")
 
 let contacts = [];
 
@@ -14,4 +15,20 @@ function afficher () {
         liste.append(li);
     })
 }
-afficher ();
+
+formulaire.addEventListener("submit", (event)=> {
+    event.preventDefault();
+    if (nom.value.trim() === "") {
+        alert("Enrer un nom");
+        return;
+    }
+    const contact = {
+        nom : nom.value.trim(),
+        number : tel.value.trim()
+    }
+    contacts.push(contact);
+    formulaire.reset();
+    afficher ();
+})
+
+afficher();
