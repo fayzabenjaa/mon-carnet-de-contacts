@@ -6,26 +6,42 @@ const tel = document.getElementById("tel")
 const formulaire = document.getElementById("form")
 
 let contacts = [];
+let indexEdit = null;
 
 function afficher () {
     liste.innerHTML = ``;
     contacts.forEach((contact, index) => {
         const li = document.createElement("li");
         li.textContent = `${contact.nom} ${contact.tel}`;
+
         const deletbtn = document.createElement("button");
         deletbtn.textContent = "supprimer" ;
+        deletbtn.dataset.action = "delet"
         deletbtn.dataset.index = index;
 
-        li.append(deletbtn);
+        const editbtn = document.createElement("button");
+        editbtn.textContent = "modifier";
+        editbtn.dataset.action = "edit"
+        editbtn.dataset.index = index;
+
+        li.append(deletbtn, editbtn);
         liste.append(li);
     })
 }
 
 liste.addEventListener("click", (event)=> {
     if (event.target.tagName === "BUTTON") {
-        const index = event.target.dataset.index;
-        contacts.splice(index, 1);
-        afficher();
+        const index = Number(event.target.dataset.index)
+        if (event.target.dataset.action === "delet") {
+            contacts.splice(index, 1);
+            afficher();
+        }
+        if (event.target.dataset.action === "edit") {
+            nom.value = contacts[index].nom;
+            tel.value = contacts[index].tel;
+            indexEdit = index ;
+            formulaire.querySelector('button[type = "submit"]').textContent = "Modifier";
+        }
     }
 })
 
@@ -37,9 +53,15 @@ formulaire.addEventListener("submit", (event)=> {
     }
     const contact = {
         nom : nom.value.trim(),
-        number : tel.value.trim()
+        tel : tel.value.trim()
     }
-    contacts.push(contact);
+    if (indexEdit === null) {
+        contacts.push(contact);
+    }else {
+        contacts[indexEdit] = contact;
+    }
+    indexEdit = null
+    formulaire.querySelector('button[type = "submit"]').textContent = "+ Ajouter";
     formulaire.reset();
     afficher ();
 })
