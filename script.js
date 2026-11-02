@@ -5,8 +5,13 @@ const nom = document.getElementById("nom")
 const tel = document.getElementById("tel")
 const formulaire = document.getElementById("form")
 
+
 let contacts = [];
 let indexEdit = null;
+
+function affichercompteur () {
+    compteur.textContent = `${contacts.length} contact(s)`
+}
 
 function afficher () {
     liste.innerHTML = ``;
@@ -27,6 +32,7 @@ function afficher () {
         li.append(deletbtn, editbtn);
         liste.append(li);
     })
+    affichercompteur();
 }
 
 liste.addEventListener("click", (event)=> {
