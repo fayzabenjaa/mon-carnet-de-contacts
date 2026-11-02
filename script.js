@@ -9,13 +9,22 @@ const formulaire = document.getElementById("form")
 let contacts = [];
 let indexEdit = null;
 
+search.addEventListener("input", ()=> {
+    const recherche = search.value.toLowerCase();
+    const resultats = contacts.filter((contact)=> {
+        return contact.nom.toLowerCase().includes(recherche);
+    })
+    afficher(resultats);
+})
+
 function affichercompteur () {
     compteur.textContent = `${contacts.length} contact(s)`
 }
 
-function afficher () {
+function afficher (listeContacts = contacts) {
     liste.innerHTML = ``;
-    contacts.forEach((contact, index) => {
+    listeContacts.forEach((contact) => {
+        const index =contacts.indexOf(contact)
         const li = document.createElement("li");
         li.textContent = `${contact.nom} ${contact.tel}`;
 
